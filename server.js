@@ -1,6 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
+import routes from "./routes/index.js";
 import { connectDB } from "./config/db.js";
 
 dotenv.config();
@@ -14,6 +15,8 @@ connectDB();
 app.get("/api", (req,res)=>{
     res.send("Welcome to the Grocery API plateform");
 });
+
+app.use("/api", routes);
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
